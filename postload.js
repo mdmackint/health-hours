@@ -17,7 +17,6 @@ document.addEventListener("mousedown", function () {
     })
 
     mouseDownTimestamp = Date.now()
-    navigator.vibrate([50,50,50,50])
 })
 
 document.addEventListener("touchstart", function () {
