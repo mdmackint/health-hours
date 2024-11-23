@@ -38,7 +38,6 @@ bignumberdiv.addEventListener("mouseup", function () {
         document.getElementById("numberItself").innerText = hours
     }
 })
-
 bignumberdiv.addEventListener("touchend", function () {
     if (Date.now() - mouseDownTimestamp >= 1500) {
         launchConfetti()
@@ -46,7 +45,14 @@ bignumberdiv.addEventListener("touchend", function () {
         localStorage.setItem("hours",hours + 1)
         hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
-        navigator.vibrate([97,23,87,16,94,15,84,29,54,39,64,28,64,0,0,56,44,97,46,92,46,93])
+        let i = 1
+        let haptics = []
+        while (i <= 50) {
+            haptics.push(Number(Math.random().toString().substring(0,3))*100)
+            i = i + 1
+        }
+        console.log(haptics)
+        navigator.vibrate(haptics)
     }
 })
 /*document.addEventListener("long-press", function () {
