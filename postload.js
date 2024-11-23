@@ -47,7 +47,7 @@ bignumberdiv.addEventListener("touchend", function () {
         document.getElementById("numberItself").innerText = hours
         let i = 1
         let haptics = []
-        while (i <= 25) {
+        while (i <= 15) {
             haptics.push(Number(Math.random().toString().substring(0,4))*100)
             i = i + 1
         }
