@@ -29,7 +29,7 @@ function pmod(mod) {
         }, 500)
     } else {
         localStorage.setItem("hours", current + mod)
-        var hours = Number(localStorage.getItem("hours"))
+        let hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
         launchConfetti()
         setTimeout(toggleMenu(), 1000)

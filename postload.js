@@ -32,6 +32,7 @@ bignumberdiv.addEventListener("touchstart", function () {
 bignumberdiv.addEventListener("mouseup", function () {
     if (Date.now() - mouseDownTimestamp >= 1500) {
         launchConfetti()
+        hours = Number(localStorage.getItem("hours"))
         localStorage.setItem("hours",hours + 1)
         hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
@@ -41,6 +42,7 @@ bignumberdiv.addEventListener("mouseup", function () {
 bignumberdiv.addEventListener("touchend", function () {
     if (Date.now() - mouseDownTimestamp >= 1500) {
         launchConfetti()
+        hours = Number(localStorage.getItem("hours"))
         localStorage.setItem("hours",hours + 1)
         hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
