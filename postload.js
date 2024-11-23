@@ -48,7 +48,7 @@ bignumberdiv.addEventListener("touchend", function () {
         let i = 1
         let haptics = []
         while (i <= 50) {
-            haptics.push(Number(Math.random().toString().substring(0,3))*100)
+            haptics.push(Number(Math.random().toString().substring(0,4))*100)
             i = i + 1
         }
         console.log(haptics)
