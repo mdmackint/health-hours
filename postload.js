@@ -9,8 +9,9 @@ const launchConfetti = function (count = 400) {
 var hours = Number(localStorage.getItem("hours"))
 var mouseDownTimestamp
 document.getElementById("numberItself").innerText = hours
+const bignumberdiv = qs("#bignumber")
 
-document.addEventListener("mousedown", function () {
+bignumberdiv.addEventListener("mousedown", function () {
     confetti.addConfetti({
         emojis: ["🥁"],
         confettiNumber: 6
@@ -19,7 +20,7 @@ document.addEventListener("mousedown", function () {
     mouseDownTimestamp = Date.now()
 })
 
-document.addEventListener("touchstart", function () {
+bignumberdiv.addEventListener("touchstart", function () {
     confetti.addConfetti({
         emojis: ["🥁"],
         confettiNumber: 6
@@ -28,7 +29,7 @@ document.addEventListener("touchstart", function () {
     mouseDownTimestamp = Date.now()
 })
 
-document.addEventListener("mouseup", function () {
+bignumberdiv.addEventListener("mouseup", function () {
     if (Date.now() - mouseDownTimestamp >= 1500) {
         launchConfetti()
         localStorage.setItem("hours",hours + 1)
@@ -37,7 +38,7 @@ document.addEventListener("mouseup", function () {
     }
 })
 
-document.addEventListener("touchend", function () {
+bignumberdiv.addEventListener("touchend", function () {
     if (Date.now() - mouseDownTimestamp >= 1500) {
         launchConfetti()
         localStorage.setItem("hours",hours + 1)
