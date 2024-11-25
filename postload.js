@@ -5,7 +5,29 @@ const launchConfetti = function (count = 400) {
         confettiNumber: count
     })
 }
-
+function reloadLastUpdate() {
+    let lastUpdate = Number(localStorage.getItem("lastUpdate"))
+    if (lastUpdate == "-1") {
+        qs("#lastUpdate").innerText = "never"
+    } else {
+        let diff = Date.now() - lastUpdate
+        // change difference into minutes, ready to update the span with, and also remove decimal places by rounding down
+        diff = diff / 60000
+        diff = Math.floor(diff)
+        if (diff > 0) {
+            if (diff == 1) {
+                qs("#lastUpdate").innerText = diff + " minute ago"
+            } else if (diff >= 60) {
+                qs("#lastUpdate").innerText = Math.floor(diff / 60) + "h and " + diff % 60 + "m ago"
+            } else {
+                qs("#lastUpdate").innerText = diff + " minutes ago"
+            }
+        } else {
+            qs("#lastUpdate").innerText = "just now"
+        }
+    }
+}
+reloadLastUpdate()
 var hours = Number(localStorage.getItem("hours"))
 var mouseDownTimestamp
 document.getElementById("numberItself").innerText = hours
@@ -36,6 +58,8 @@ bignumberdiv.addEventListener("mouseup", function () {
         localStorage.setItem("hours",hours + 1)
         hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
+        localStorage.setItem("lastUpdate",Date.now())
+        reloadLastUpdate()
     }
 })
 bignumberdiv.addEventListener("touchend", function () {
@@ -45,6 +69,8 @@ bignumberdiv.addEventListener("touchend", function () {
         localStorage.setItem("hours",hours + 1)
         hours = Number(localStorage.getItem("hours"))
         document.getElementById("numberItself").innerText = hours
+        localStorage.setItem("lastUpdate",Date.now())
+        reloadLastUpdate()
         let i = 1
         let haptics = []
         while (i <= 20) {

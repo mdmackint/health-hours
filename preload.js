@@ -1,6 +1,9 @@
 if (localStorage.getItem("hours") == null) {
     localStorage.setItem("hours",0)
 }
+if (localStorage.getItem("lastUpdate") == null) {
+    localStorage.setItem("lastUpdate", "-1")
+}
 function qs(query) {
     return document.querySelector(query)
 }
@@ -10,8 +13,10 @@ function toggleMenu() {
         qs("#bignumber").classList.remove("menued")
         qs("#menuFlyout").classList.remove("opaque")
         setTimeout(function () {qs("#menuFlyout").classList.remove("flown")}, 500)
+        qs("#updateContainer").classList.remove("hidden")
     } else {
         // code to run if it is being opened
+        qs("#updateContainer").classList.add("hidden")
         qs("#bignumber").classList.add("menued")
         qs("#menuFlyout").classList.add("flown")
         setTimeout(function () {
